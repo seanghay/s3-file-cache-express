@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  storage:
+    image: minio/minio
+    command: server --console-address ":9101" --address ":9100" /data
+    ports:
+      - "127.0.0.1:9100:9100"
+      - "127.0.0.1:9101:9101"
+    environment:
+      MINIO_BROWSER_REDIRECT_URL: http://127.0.0.1:9101
+      MINIO_ROOT_USER: notuser
+      MINIO_ROOT_PASSWORD: notpassword
+    volumes:
+      - storage_data:/data
+volumes:
+  storage_data:
