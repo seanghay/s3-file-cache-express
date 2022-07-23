@@ -30,14 +30,3 @@ export async function fileExists(filename) {
 export async function getFileUrl(filename) {
   return await client.presignedGetObject(BUCKET_NAME, filename);
 }
-
-// const response = await putFileBuffer(
-//   "sample.html",
-//   await fs.readFile("sample.html"),
-//   "text/html; charset=utf-8"
-// );
-// console.log(response);
-
-console.time('a')
-console.log(await fileExists('sample.html'))
-console.timeEnd('a')
